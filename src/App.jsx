@@ -7,6 +7,7 @@ import TransitionSection from "./components/TransitionSection";
 import Paquetes from "./pages/Paquetes";
 import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
+import ChatBox from "./components/ChatBox"
 
 function App() {
   const [language, setLanguage] = useState("es");
@@ -27,6 +28,7 @@ function App() {
       <TransitionSection />
       <Contacto language={language} />
       <Footer language={language} />
+      <ChatBox />
     </div>
   );
 }
