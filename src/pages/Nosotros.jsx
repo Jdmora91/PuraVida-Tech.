@@ -83,14 +83,16 @@ function Nosotros({ language }) {
               : "“We transform ideas into digital experiences with Costa Rican essence.”"}
           </p>
           <div className="mt-10">
-            <a
-              href="#contact"
-              className="bg-[#4ECDC4] hover:bg-[#2ECCB2] text-white font-semibold px-8 py-3 rounded-lg shadow-lg transition-all duration-300"
-            >
-              {language === "es"
-                ? "Hablemos de tu proyecto"
-                : "Let's talk about your project"}
-            </a>
+<a
+  href="#contacto"
+  className="bg-gradient-to-r from-[#4ECDC4] to-[#2ECCB2] hover:opacity-90 text-white font-semibold px-5 py-2.5 md:px-8 md:py-3 text-sm md:text-base rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap text-center"
+>
+  {language === "es"
+    ? "Hablemos de tu proyecto"
+    : "Let's Talk About Your Project"}
+</a>
+
+
           </div>
         </div>
       </div>

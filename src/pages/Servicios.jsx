@@ -41,7 +41,7 @@ function Servicios({ language }) {
               : "Modern, fast, and brand-tailored websites that inspire confidence in both local and international clients."}
           </p>
           <a
-            href="#contact"
+            href="#contacto"
             className="text-[#4ECDC4] font-semibold hover:underline"
           >
             {language === "es" ? "Cotizar ahora →" : "Get a quote →"}
@@ -60,7 +60,7 @@ function Servicios({ language }) {
               : "Optimized stores open 24/7, with WhatsApp integration, local payment gateways, and full control of your products."}
           </p>
           <a
-            href="#contact"
+            href="#contacto"
             className="text-[#4ECDC4] font-semibold hover:underline"
           >
             {language === "es" ? "Próximamente →" : "Coming Soon →"}
@@ -79,7 +79,7 @@ function Servicios({ language }) {
               : "Attractive, functional design with booking and form integration for a smooth, professional experience."}
           </p>
           <a
-            href="#contact"
+            href="#contacto"
             className="text-[#4ECDC4] font-semibold hover:underline"
           >
             {language === "es" ? "Próximamente →" : "Coming Soon →"}
@@ -98,7 +98,7 @@ function Servicios({ language }) {
               : "Dynamic catalogs, interactive maps, and direct contact to showcase your properties with style."}
           </p>
           <a
-            href="#contact"
+            href="#contacto"
             className="text-[#4ECDC4] font-semibold hover:underline"
           >
             {language === "es" ? "Próximamente →" : "Coming Soon →"}
@@ -113,14 +113,16 @@ function Servicios({ language }) {
             ? "“Transformamos ideas en experiencias digitales que generan confianza.”"
             : "“We transform ideas into digital experiences that build trust.”"}
         </p>
-        <a
-          href="#contact"
-          className="bg-gradient-to-r from-[#4ECDC4] to-[#2ECCB2] hover:opacity-90 text-white font-semibold px-10 py-4 rounded-lg shadow-lg transition-all duration-300"
-        >
-          {language === "es"
-            ? "Hablemos de tu proyecto"
-            : "Let's Talk About Your Project"}
-        </a>
+<a
+  href="#contacto"
+  className="bg-gradient-to-r from-[#4ECDC4] to-[#2ECCB2] hover:opacity-90 text-white font-semibold px-5 py-2.5 md:px-8 md:py-3 text-sm md:text-base rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap text-center"
+>
+  {language === "es"
+    ? "Hablemos de tu proyecto"
+    : "Let's Talk About Your Project"}
+</a>
+
+
       </div>
     </section>
   );

@@ -5,11 +5,23 @@ import translations from "../i18n/translations";
 function Home({ language }) {
   const t = translations[language].home;
 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center items-start px-8 md:px-20 text-white bg-fixed bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: `url(${fondo})` }}
+      className="relative min-h-screen flex flex-col justify-center items-start px-8 md:px-20 text-white overflow-hidden"
+      style={{
+        backgroundImage: `url(${fondo})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-teal-400/20"></div>
 
@@ -22,10 +34,16 @@ function Home({ language }) {
         </p>
 
         <div className="flex gap-4 mt-8">
-          <button className="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200">
+          <button
+            className="bg-teal-500 hover:bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200"
+            onClick={() => scrollToSection("services")}
+          >
             {t.btn1}
           </button>
-          <button className="border border-teal-400 hover:bg-teal-400 hover:text-black font-semibold px-6 py-3 rounded-lg transition-all duration-200">
+          <button
+            className="border border-teal-400 hover:bg-teal-400 hover:text-black font-semibold px-6 py-3 rounded-lg transition-all duration-200"
+            onClick={() => scrollToSection("contacto")}
+          >
             {t.btn2}
           </button>
         </div>
