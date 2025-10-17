@@ -52,7 +52,7 @@ function Servicios({ language }) {
         <div className="bg-[#1A1F25]/60 p-10 rounded-2xl shadow-lg text-center hover:translate-y-[-6px] hover:shadow-[#4ECDC4]/20 transition-all duration-500 flex flex-col items-center">
           <FaShoppingCart className="text-[#4ECDC4] text-5xl mb-6" />
           <h3 className="text-2xl font-semibold mb-3">
-            {language === "es" ? "Tiendas Online" : "Online Stores"}
+            {language === "es" ? "Restaurantes y Cafe" : "Restorants & Cafes"}
           </h3>
           <p className="text-gray-300 text-sm leading-relaxed mb-6">
             {language === "es"
@@ -60,10 +60,12 @@ function Servicios({ language }) {
               : "Optimized stores open 24/7, with WhatsApp integration, local payment gateways, and full control of your products."}
           </p>
           <a
-            href="#contacto"
+            href="https://demo-restaurante-two.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[#4ECDC4] font-semibold hover:underline"
           >
-            {language === "es" ? "Próximamente →" : "Coming Soon →"}
+            Chef Calderón →
           </a>
         </div>
 
@@ -113,14 +115,14 @@ function Servicios({ language }) {
             ? "“Transformamos ideas en experiencias digitales que generan confianza.”"
             : "“We transform ideas into digital experiences that build trust.”"}
         </p>
-<a
-  href="#contacto"
-  className="bg-gradient-to-r from-[#4ECDC4] to-[#2ECCB2] hover:opacity-90 text-white font-semibold px-5 py-2.5 md:px-8 md:py-3 text-sm md:text-base rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap text-center"
->
-  {language === "es"
-    ? "Hablemos de tu proyecto"
-    : "Let's Talk About Your Project"}
-</a>
+        <a
+          href="#contacto"
+          className="bg-gradient-to-r from-[#4ECDC4] to-[#2ECCB2] hover:opacity-90 text-white font-semibold px-5 py-2.5 md:px-8 md:py-3 text-sm md:text-base rounded-lg shadow-lg transition-all duration-300 whitespace-nowrap text-center"
+        >
+          {language === "es"
+            ? "Hablemos de tu proyecto"
+            : "Let's Talk About Your Project"}
+        </a>
 
 
       </div>
