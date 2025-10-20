@@ -8,6 +8,7 @@ import Paquetes from "./pages/Paquetes";
 import Contacto from "./pages/Contacto";
 import Footer from "./components/Footer";
 import ChatBox from "./components/ChatBox";
+import Trabajos from "./pages/Trabajos"; 
 
 function App() {
   const [language, setLanguage] = useState("es");
@@ -19,12 +20,10 @@ function App() {
   };
 
   useEffect(() => {
-   
     const interval = setInterval(() => {
       setProgress((prev) => (prev < 100 ? prev + 5 : 100));
     }, 80);
 
-    
     setTimeout(() => {
       clearInterval(interval);
       setLoading(false);
@@ -38,16 +37,13 @@ function App() {
       {/* Pantalla de carga */}
       {loading ? (
         <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#0e141b] text-white z-50 transition-opacity duration-500">
-          {/* Si tienes un logo, puedes añadirlo aquí */}
-          {/* <img src="/images/logo.png" alt="PuraVida Tech" className="w-20 mb-6" /> */}
-
           <h1 className="text-2xl md:text-3xl font-semibold text-teal-400 mb-6 text-center">
             {language === "es"
               ? "Cargando su mejor opción..."
               : "Loading your best choice..."}
           </h1>
 
-          {/*Barra*/}
+          {/* Barra de carga */}
           <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-teal-400 to-green-400 transition-all duration-300"
@@ -56,14 +52,15 @@ function App() {
           </div>
 
           <p className="mt-4 text-sm text-gray-400">
-            {progress}%{" "}
-            {language === "es" ? "completado" : "completed"}
+            {progress}% {language === "es" ? "completado" : "completed"}
           </p>
         </div>
       ) : (
         // Contenido principal
         <div className="relative bg-[#0e141b] text-white overflow-hidden">
           <Navbar language={language} toggleLanguage={toggleLanguage} />
+
+          {/* 🏡 Secciones de la página principal */}
           <Home language={language} />
           <Nosotros language={language} />
           <TransitionSection />
@@ -71,6 +68,11 @@ function App() {
           <TransitionSection />
           <Paquetes language={language} />
           <TransitionSection />
+
+          {/* 🆕 Nueva sección bilingüe de proyectos */}
+          <Trabajos language={language} />
+          <TransitionSection />
+
           <Contacto language={language} />
           <Footer language={language} />
           <ChatBox language={language} />

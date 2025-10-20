@@ -12,7 +12,7 @@ function Navbar({ language, toggleLanguage }) {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // cierra el menú al hacer clic
+      setMenuOpen(false); // cerrar menú móvil al hacer clic
     }
   };
 
@@ -30,7 +30,7 @@ function Navbar({ language, toggleLanguage }) {
           </span>
         </div>
 
-        {/* Desktop Menu */}
+        {/* Menú Desktop */}
         <ul className="hidden md:flex gap-10 text-sm font-medium">
           <li>
             <button
@@ -64,6 +64,15 @@ function Navbar({ language, toggleLanguage }) {
               {t.plans}
             </button>
           </li>
+          {/* 🆕 Nuevo botón para la sección Trabajos */}
+          <li>
+            <button
+              onClick={() => scrollToSection("trabajos")}
+              className="text-gray-200 hover:text-teal-400 transition"
+            >
+              {language === "es" ? "Nuestros Trabajos" : "Our Projects"}
+            </button>
+          </li>
           <li>
             <button
               onClick={() => scrollToSection("contacto")}
@@ -74,11 +83,11 @@ function Navbar({ language, toggleLanguage }) {
           </li>
         </ul>
 
-        {/* Idioma y menú hamburguesa */}
+        {/* Toggle de idioma y menú hamburguesa */}
         <div className="flex items-center gap-4">
           <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
 
-          {/* Botón hamburguesa visible solo en mobile */}
+          {/* Botón hamburguesa (mobile) */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-teal-400 hover:text-white transition"
@@ -88,7 +97,7 @@ function Navbar({ language, toggleLanguage }) {
         </div>
       </div>
 
-      {/* Menú móvil desplegable */}
+      {/* Menú Mobile */}
       {menuOpen && (
         <div className="md:hidden bg-[#0e141b]/95 backdrop-blur-lg border-t border-gray-700 py-6 px-8 absolute top-full left-0 w-full z-40 animate-fadeIn">
           <ul className="flex flex-col gap-5 text-center text-gray-200 font-medium">
@@ -122,6 +131,15 @@ function Navbar({ language, toggleLanguage }) {
                 className="hover:text-teal-400 transition"
               >
                 {t.plans}
+              </button>
+            </li>
+            {/* 🆕 Nuevo botón móvil para “Nuestros Trabajos” */}
+            <li>
+              <button
+                onClick={() => scrollToSection("trabajos")}
+                className="hover:text-teal-400 transition"
+              >
+                {language === "es" ? "Nuestros Trabajos" : "Our Projects"}
               </button>
             </li>
             <li>

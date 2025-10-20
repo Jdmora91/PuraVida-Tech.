@@ -99,11 +99,13 @@ function Servicios({ language }) {
               ? "Páginas con catálogos dinámicos, mapas interactivos y contacto directo para mostrar tus propiedades con estilo."
               : "Dynamic catalogs, interactive maps, and direct contact to showcase your properties with style."}
           </p>
-          <a
-            href="#contacto"
+           <a
+            href="https://demo-bienesyraices.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[#4ECDC4] font-semibold hover:underline"
           >
-            {language === "es" ? "Próximamente →" : "Coming Soon →"}
+            Bienes Y Raices →
           </a>
         </div>
       </div>

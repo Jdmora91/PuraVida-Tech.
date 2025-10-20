@@ -1,4 +1,3 @@
-// src/i18n/translations.js
 const translations = {
   es: {
     navbar: {
@@ -18,7 +17,8 @@ const translations = {
       title: "Sobre Nosotros",
       text: "En Pura Vida Tech creemos que cada negocio local merece una presencia digital tan auténtica como su historia.",
       missionTitle: "Nuestra Misión",
-      mission: "Impulsar a emprendedores, hoteles, restaurantes y agentes inmobiliarios a crecer en línea con sitios modernos, optimizados y rentables.",
+      mission:
+        "Impulsar a emprendedores, hoteles, restaurantes y agentes inmobiliarios a crecer en línea con sitios modernos, optimizados y rentables.",
     },
     services: {
       title: "Nuestros Servicios",
@@ -41,6 +41,20 @@ const translations = {
       rights: "Todos los derechos reservados.",
       slogan: "Tecnología con alma tica 🇨🇷",
     },
+
+    // 🆕 Nueva sección bilingüe completa para la página Trabajos
+    trabajos: {
+      title: "Proyectos Realizados",
+      subtitle:
+        "Algunos de los sitios web desarrollados por Pura Vida Tech para negocios y profesionales en Costa Rica.",
+      chefTitle: "Chef Calderón",
+      chefDescription:
+        "Página de marca personal para un chef costarricense profesional. Diseño elegante, bilingüe y con galería de eventos.",
+      realEstateTitle: "Bienes y Raíces",
+      realEstateDescription:
+        "Plataforma moderna y multilingüe para mostrar propiedades, zonas destacadas y contacto directo.",
+      button: "Ver Pagina Web",
+    },
   },
 
   en: {
@@ -61,7 +75,8 @@ const translations = {
       title: "About Us",
       text: "At Pura Vida Tech, we believe every local business deserves a digital presence as authentic as its story.",
       missionTitle: "Our Mission",
-      mission: "To help entrepreneurs, hotels, restaurants, and real estate agents grow online with modern, optimized, and profitable websites.",
+      mission:
+        "To help entrepreneurs, hotels, restaurants, and real estate agents grow online with modern, optimized, and profitable websites.",
     },
     services: {
       title: "Our Services",
@@ -83,6 +98,20 @@ const translations = {
       phrase: "We create digital experiences with Costa Rican essence.",
       rights: "All rights reserved.",
       slogan: "Technology with Costa Rican soul 🇨🇷",
+    },
+
+    // 🆕 English section for “Trabajos” page (fully translated)
+    trabajos: {
+      title: "Completed Projects",
+      subtitle:
+        "Some of the websites developed by Pura Vida Tech for Costa Rican businesses and professionals.",
+      chefTitle: "Chef Calderón",
+      chefDescription:
+        "Personal brand website for a professional Costa Rican chef. Elegant bilingual design with event gallery.",
+      realEstateTitle: "Real Estate Website",
+      realEstateDescription:
+        "Modern multilingual platform featuring property listings, highlighted zones, and contact form integration.",
+      button: "View Website",
     },
   },
 };
