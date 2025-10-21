@@ -100,7 +100,7 @@ function Servicios({ language }) {
               : "Dynamic catalogs, interactive maps, and direct contact to showcase your properties with style."}
           </p>
            <a
-            href="https://demo-bienesyraices.netlify.app/"
+            href="https://demo-bienes-raices.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#4ECDC4] font-semibold hover:underline"

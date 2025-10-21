@@ -20,7 +20,7 @@ export default function Trabajos({ language }) {
       title: t.realEstateTitle,
       description: t.realEstateDescription,
       image: BienesHome,
-      link: "https://demo-bienesyraices.netlify.app/",
+      link: "https://demo-bienes-raices.vercel.app/",
     },
   ];
 
