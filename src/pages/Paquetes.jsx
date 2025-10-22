@@ -18,14 +18,14 @@ function Paquetes({ language }) {
           <>
             ₡75.000 prima + ₡20.000 / mes <br />
             <span className="text-teal-400 font-semibold">
-              Precio Contado: ₡200.000 + 10% Descuento
+              Precio Contado: ₡200.000 + <strong>10% Descuento</strong>
             </span>
           </>
         ) : (
           <>
             $150 + $40 / month <br />
             <span className="text-teal-400 font-semibold">
-              Full Payment: $400 + 10% Discount
+              Full Payment: $400 + <strong>10% Discount</strong>
             </span>
           </>
         ),
@@ -45,10 +45,11 @@ function Paquetes({ language }) {
               "Botón directo a WhatsApp + mapa de ubicación",
               "Sesión fotográfica profesional (10–15 fotos del negocio y entorno)",
               "Versión bilingüe (Español / Inglés)",
-              "ChatBox informativo (automatizado o personalizado)",
+              "CHATBOX informativo (automatizado o personalizado)",
               "Dominio + hosting + SSL por 1 año",
               "1 actualizaciones mensuales incluidas",
-              "Contrato 12 meses → primer mes gratis + 2 actualizaciones mensuales incluidas",
+              "Contrato 12 meses → PRIMER MES GRATIS + 2 actualizaciones mensuales incluidas",
+              "Soporte técnico básico por WHATSAPP",
             ]
           : [
               "Web design with 1–3 sections (Home / Services / Contact)",
@@ -59,7 +60,8 @@ function Paquetes({ language }) {
               "ChatBox (automated or personalized)",
               "Domain + hosting + SSL for 1 year",
               "1 monthly updates included",
-              "12-month contract → first month free + 2 monthly updates included",
+              "12-month contract → FIRST MONTH FREE + 2 monthly updates included",
+              "Basic technical support via WHATSAPP",
             ],
       color: "from-teal-500 to-green-400",
     },
@@ -75,14 +77,14 @@ function Paquetes({ language }) {
           <>
             ₡150.000 + ₡30.000 / mes <br />
             <span className="text-teal-400 font-semibold">
-              Precio Contado: ₡400.000 + 10% Descuento
+              Precio Contado: ₡400.000 + <strong>10% Descuento</strong>
             </span>
           </>
         ) : (
           <>
             $300 + $60 / month <br />
             <span className="text-teal-400 font-semibold">
-              Full Payment: $800 + 10% Discount
+              Full Payment: $800 + <strong>10% Discount</strong>
             </span>
           </>
         ),
@@ -101,11 +103,12 @@ function Paquetes({ language }) {
               "Formularios avanzados, reservas o catálogo dinámico",
               "Sesión fotográfica avanzada (20–30 fotos del negocio o propiedad)",
               "Versión bilingüe (Español / Inglés)",
-              "Chat IA avanzado (automatización de respuestas o cotizaciones)",
+              "CHATBOX IA con IA (automatización de respuestas o cotizaciones)",
               "Hosting premium + dominio + SSL por 1 año",
               "5 actualizaciones mensuales incluidas",
               "Integración con Google Maps, WhatsApp y correo profesional",
-              "Contrato 12 meses → primer mes gratis",
+              "Contrato 12 meses → PRIMER MES GRATIS",
+              "Soporte técnico por WHATSAPP",
             ]
           : [
               "Up to 6 pages or web app with backend and admin panel",
@@ -116,7 +119,8 @@ function Paquetes({ language }) {
               "Premium hosting + domain + SSL for 1 year",
               "5 monthly updates included",
               "Integration with Google Maps, WhatsApp and professional email",
-              "12-month contract → first month free",
+              "12-month contract → fIRST MONTH FREE",
+              "Technical support via WHATSAPP",
             ],
       color: "from-cyan-500 to-blue-400",
     },
