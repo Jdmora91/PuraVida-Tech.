@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ChefHome from "../assets/ChefCalderon/home.jpg";
 import BienesHome from "../assets/BienesRaices/homeFranc.png";
+import clinica from "../assets/Clinica/Home.png"
 import translations from "../i18n/translations";
 
 export default function Trabajos({ language }) {
@@ -21,6 +22,13 @@ export default function Trabajos({ language }) {
       description: t.realEstateDescription,
       image: BienesHome,
       link: "https://demo-bienes-raices.vercel.app/",
+    },
+      {
+      id: 3,
+      title: t.clinicaTitle,
+      description: t.clinicaDescription,
+      image: clinica,
+      link: "https://demo-clinica-puravida.vercel.app/",
     },
   ];
 

@@ -53,7 +53,9 @@ const translations = {
       realEstateTitle: "Bienes y Raíces",
       realEstateDescription:
         "Plataforma moderna y multilingüe para mostrar propiedades, zonas destacadas y contacto directo.",
-      button: "Ver Pagina Web",
+      clinicaTitle:"Clinica Pura Vida",
+      clinicaDescription:"Página web moderna y elegante para una clínica médica costarricense, diseñada para mostrar sus servicios, equipo profesional y ubicación con un enfoque humano y confiable. Incluye secciones visuales premium, testimonios, contacto y herramientas prácticas para pacientes tanto locales como extranjeros.",
+        button: "Ver Pagina Web",
     },
   },
 
@@ -111,6 +113,8 @@ const translations = {
       realEstateTitle: "Real Estate Website",
       realEstateDescription:
         "Modern multilingual platform featuring property listings, highlighted zones, and contact form integration.",
+      clinicaTitle: "Pura Vida Clinic",
+      clinicaDescription: "Modern and elegant website for a Costa Rican medical clinic, designed to showcase its services, professional team, and location with a human and trustworthy approach. It includes premium visual sections, testimonials, contact options, and practical tools for both local and international patients.",
       button: "View Website",
     },
   },
