@@ -4,7 +4,7 @@ import LanguageToggle from "./LanguageToggle";
 import translations from "../i18n/translations";
 import { Menu, X } from "lucide-react";
 
-function Navbar({ language, toggleLanguage }) {
+export default function Navbar({ language, toggleLanguage }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const t = translations[language].navbar;
 
@@ -12,149 +12,145 @@ function Navbar({ language, toggleLanguage }) {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // cerrar menú móvil al hacer clic
+      setMenuOpen(false);
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#0e141b]/70 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
-        {/* Logo */}
+    <>
+      {/* NAVBAR ULTRA-X DESKTOP */}
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden md:flex">
         <div
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => scrollToSection("home")}
+          className="
+            bg-[#0e141b]/60 
+            backdrop-blur-xl 
+            border border-white/10 
+            rounded-full 
+            px-8 py-2 
+            shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+            flex items-center gap-8
+            transition-all duration-300
+          "
         >
-          <img src={Logo} alt="Pura Vida Tech logo" className="h-10 w-auto" />
-          <span className="text-xl font-bold text-white tracking-tight">
-            Pura Vida <span className="text-teal-400">Tech</span>
-          </span>
-        </div>
-
-        {/* Menú Desktop */}
-        <ul className="hidden md:flex gap-10 text-sm font-medium">
-          <li>
-            <button
-              onClick={() => scrollToSection("home")}
-              className="text-gray-200 hover:text-teal-400 transition"
-            >
-              {t.home}
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("nosotros")}
-              className="text-gray-200 hover:text-teal-400 transition"
-            >
-              {t.about}
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("services")}
-              className="text-gray-200 hover:text-teal-400 transition"
-            >
-              {t.services}
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("paquetes")}
-              className="text-gray-200 hover:text-teal-400 transition"
-            >
-              {t.plans}
-            </button>
-          </li>
-          {/* 🆕 Nuevo botón para la sección Trabajos */}
-          <li>
-            <button
-              onClick={() => scrollToSection("trabajos")}
-              className="text-gray-200 hover:text-teal-400 transition"
-            >
-              {language === "es" ? "Nuestros Trabajos" : "Our Projects"}
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection("contacto")}
-              className="text-gray-200 hover:text-teal-400 transition"
-            >
-              {t.contact}
-            </button>
-          </li>
-        </ul>
-
-        {/* Toggle de idioma y menú hamburguesa */}
-        <div className="flex items-center gap-4">
-          <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
-
-          {/* Botón hamburguesa (mobile) */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-teal-400 hover:text-white transition"
+          {/* Logo minimal */}
+          <div
+            onClick={() => scrollToSection("home")}
+            className="flex items-center gap-2 cursor-pointer select-none"
           >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
-      </div>
+            <img src={Logo} className="h-7 w-auto opacity-90" />
+          </div>
 
-      {/* Menú Mobile */}
-      {menuOpen && (
-        <div className="md:hidden bg-[#0e141b]/95 backdrop-blur-lg border-t border-gray-700 py-6 px-8 absolute top-full left-0 w-full z-40 animate-fadeIn">
-          <ul className="flex flex-col gap-5 text-center text-gray-200 font-medium">
-            <li>
-              <button
-                onClick={() => scrollToSection("home")}
-                className="hover:text-teal-400 transition"
-              >
-                {t.home}
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("nosotros")}
-                className="hover:text-teal-400 transition"
-              >
-                {t.about}
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("services")}
-                className="hover:text-teal-400 transition"
-              >
-                {t.services}
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("paquetes")}
-                className="hover:text-teal-400 transition"
-              >
-                {t.plans}
-              </button>
-            </li>
-            {/* 🆕 Nuevo botón móvil para “Nuestros Trabajos” */}
-            <li>
-              <button
-                onClick={() => scrollToSection("trabajos")}
-                className="hover:text-teal-400 transition"
-              >
-                {language === "es" ? "Nuestros Trabajos" : "Our Projects"}
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("contacto")}
-                className="hover:text-teal-400 transition"
-              >
-                {t.contact}
-              </button>
-            </li>
+          {/* Menu */}
+          <ul className="flex items-center gap-6 text-sm">
+            {[
+              { label: t.home, id: "home" },
+              { label: t.about, id: "nosotros" },
+              { label: t.services, id: "services" },
+              { label: t.plans, id: "paquetes" },
+              {
+                label: language === "es" ? "Trabajos" : "Projects",
+                id: "trabajos",
+              },
+              { label: t.contact, id: "contacto" },
+            ].map((item, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => scrollToSection(item.id)}
+                  className="
+                    text-gray-300 
+                    hover:text-white 
+                    transition-all 
+                    duration-200
+                    font-medium
+                    relative
+                    group
+                  "
+                >
+                  {/* Texto que crece */}
+                  <span
+                    className="
+                      transition-all duration-300
+                      group-hover:text-teal-400
+                      group-hover:scale-110
+                      inline-block
+                    "
+                  >
+                    {item.label}
+                  </span>
+
+                  {/* Subrayado animado */}
+                  <span
+                    className="
+                      absolute left-1/2 -translate-x-1/2 
+                      bottom-[-4px]
+                      h-[2px] w-0 
+                      bg-teal-400 
+                      rounded-full
+                      group-hover:w-4 
+                      transition-all duration-300
+                    "
+                  ></span>
+                </button>
+              </li>
+            ))}
           </ul>
+
+          {/* Toggle idioma */}
+          <LanguageToggle language={language} toggleLanguage={toggleLanguage} />
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* MOBILE ULTRA-X BURGER */}
+      <nav className="fixed top-4 right-4 z-50 md:hidden">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="bg-[#0e141b]/70 backdrop-blur-xl border border-white/10 rounded-full p-2 text-teal-400"
+        >
+          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+
+        {menuOpen && (
+          <div
+            className="
+              absolute right-0 mt-3 
+              bg-[#0e141b]/90 backdrop-blur-xl
+              border border-white/10 
+              rounded-2xl p-6 
+              w-52 text-center 
+              shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+              animate-fadeIn
+            "
+          >
+            <ul className="flex flex-col gap-5 text-gray-300 font-medium">
+              {[
+                { label: t.home, id: "home" },
+                { label: t.about, id: "nosotros" },
+                { label: t.services, id: "services" },
+                { label: t.plans, id: "paquetes" },
+                {
+                  label: language === "es" ? "Trabajos" : "Projects",
+                  id: "trabajos",
+                },
+                { label: t.contact, id: "contacto" },
+              ].map((item, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="hover:text-teal-400 transition"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+
+              <LanguageToggle
+                language={language}
+                toggleLanguage={toggleLanguage}
+              />
+            </ul>
+          </div>
+        )}
+      </nav>
+    </>
   );
 }
-
-export default Navbar;

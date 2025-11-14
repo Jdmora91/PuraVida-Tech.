@@ -6,7 +6,7 @@ import Nosotros from "./pages/Nosotros";
 import Servicios from "./pages/Servicios";
 import Paquetes from "./pages/Paquetes";
 import Contacto from "./pages/Contacto";
-import Trabajos from "./pages/Trabajos"; 
+import Trabajos from "./pages/Trabajos";
 
 //Components
 import Navbar from "./components/NavBar";
@@ -17,72 +17,100 @@ import Footer from "./components/Footer";
 
 function App() {
   const [language, setLanguage] = useState("es");
-  const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
-
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "es" ? "en" : "es"));
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => (prev < 100 ? prev + 5 : 100));
-    }, 80);
+    const spotlight = document.getElementById("spotlight");
 
-    setTimeout(() => {
-      clearInterval(interval);
-      setLoading(false);
-    }, 2500);
+    const handleMouseMove = (e) => {
+      spotlight.style.background = `
+      radial-gradient(
+        circle at ${e.clientX}px ${e.clientY}px,
+        rgba(255,255,255,0.12) 0%,
+        transparent 60%
+      )
+    `;
+    };
 
-    return () => clearInterval(interval);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    let timer;
+    const handleScroll = () => {
+      document.body.classList.add("scrolling");
+
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        document.body.classList.remove("scrolling");
+      }, 250); // se apaga suavemente
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  useEffect(() => {
+    const thumb = document.getElementById("jarvis-thumb");
+    const track = document.getElementById("jarvis-track");
+
+    const updateThumb = () => {
+      const scroll = window.scrollY;
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const trackHeight = track.offsetHeight - 20;
+
+      const ratio = scroll / maxScroll;
+      const pos = ratio * trackHeight;
+
+      thumb.style.top = `${pos + 20}px`;
+    };
+
+    window.addEventListener("scroll", updateThumb);
+    updateThumb();
+
+    return () => window.removeEventListener("scroll", updateThumb);
+  }, []);
+
+
+
   return (
-    <>
-      {/* Pantalla de carga */}
-      {loading ? (
-        <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#0e141b] text-white z-50 transition-opacity duration-500">
-          <h1 className="text-2xl md:text-3xl font-semibold text-teal-400 mb-6 text-center">
-            {language === "es"
-              ? "Cargando su mejor opción..."
-              : "Loading your best choice..."}
-          </h1>
+    <div className="relative bg-[#0e141b] text-white overflow-hidden">
 
-          {/* Barra de carga */}
-          <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-teal-400 to-green-400 transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
 
-          <p className="mt-4 text-sm text-gray-400">
-            {progress}% {language === "es" ? "completado" : "completed"}
-          </p>
-        </div>
-      ) : (
-        // Contenido principal
-        <div className="relative bg-[#0e141b] text-white overflow-hidden">
-          <Navbar language={language} toggleLanguage={toggleLanguage} />
 
-          {/* 🏡 Secciones de la página principal */}
-          <Home language={language} />
-          <Nosotros language={language} />
-          <TransitionSection />
-          <Servicios language={language} />
-          <TransitionSection />
-          <Paquetes language={language} />
-          <TransitionSection />
-          <Trabajos language={language} />
-          <TransitionSection />
-          <Contacto language={language} />
+      <Navbar language={language} toggleLanguage={toggleLanguage} />
 
-          <Footer language={language} />
-          <ChatBot language={language} />
-          <WhatsAppButton language={language} />
-        </div>
-      )}
-    </>
+      <Home language={language} />
+      <TransitionSection />
+
+      <Nosotros language={language} />
+      <TransitionSection />
+
+      <Servicios language={language} />
+      <TransitionSection />
+
+      <Paquetes language={language} />
+      <TransitionSection />
+
+      <Trabajos language={language} />
+      <TransitionSection />
+
+      <Contacto language={language} />
+
+      <Footer language={language} />
+      <ChatBot language={language} />
+      <WhatsAppButton language={language} />
+      {/* Apple Vision Pro Scrollbar */}
+      {/* Jarvis Scrollbar */}
+      <div id="jarvis-scrollbar">
+        <div id="jarvis-track"></div>
+        <div id="jarvis-thumb"></div>
+      </div>
+
+
+    </div>
   );
 }
 
