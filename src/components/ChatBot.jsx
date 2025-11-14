@@ -2,233 +2,291 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, X } from "lucide-react";
 
-export default function ChatBot({ language = "es" }) {
+/* === TYPING INDICATOR (premium minimal) === */
+function TypingIndicator() {
+  return (
+    <div className="flex items-center gap-1 ml-2 mb-1">
+      <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce [animation-delay:0ms]"></span>
+      <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce [animation-delay:150ms]"></span>
+      <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce [animation-delay:300ms]"></span>
+    </div>
+  );
+}
+
+export default function ChatBot({ language = "es", open, setOpen }) {
   const [isMobile, setIsMobile] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [open, setOpen] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef(null);
 
-  // Detectar Mobile/Desktop
+  // MOBILE CHECK
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Autoscroll
+  // AUTOSCROLL
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, isTyping]);
 
-  // === RESPUESTAS AUTOMÁTICAS ===
+  // === INTELIGENCIA DEL BOT (muchas palabras clave nuevas) ===
   const handleSmartResponses = (text) => {
     const t = text.toLowerCase();
 
-    // Paquetes
+    /* ======== PRECIOS ======== */
     if (
-      t.includes("paquete") ||
       t.includes("precio") ||
-      t.includes("oferta") ||
-      t.includes("package") ||
+      t.includes("paquete") ||
+      t.includes("coste") ||
+      t.includes("cuanto cuesta") ||
       t.includes("price") ||
+      t.includes("cost") ||
       t.includes("offer")
     ) {
       return language === "es"
-        ? `¡Pura vida! 😊  
-Tenemos dos paquetes estrella:
+        ? `¡Con gusto! Tenemos 2 paquetes principales:
 
-• **Paquete Básico: ₡180.000 (US $400)** — Contado o sistema de pagos.  
-• **Paquete Premium: ₡350.000 (US $700)** — Contado o sistema de pagos.
+• **Paquete Básico: ₡180.000 (US $400)** – Página moderna, 100% responsive, WhatsApp integrado, SEO inicial.  
+• **Paquete Premium: ₡350.000 (US $700)** – Todo lo anterior + diseño avanzado, animaciones, más secciones, branding, sistema multilenguaje.
 
-¿Querés que te muestre las demos o los detalles completos?`
-        : `Pura vida! 😊  
-We offer two main packages:
+¿Querés que te recomiende uno según tu negocio?`
+        : `Sure! We have 2 main packages:
 
-• **Basic Package: US $400 (₡180.000)** — One-time or payment plan.  
-• **Premium Package: US $700 (₡350.000)** — One-time or payment plan.
+• **Basic: $400** – Modern site, responsive, WhatsApp, basic SEO  
+• **Premium: $700** – Advanced design, animations, branding, multi-language
 
-Would you like the demos or full details?`;
+Want me to recommend the best option for you?`;
     }
 
-    // Demos / trabajos
+    /* ======== DEMOS ======== */
     if (
       t.includes("demo") ||
       t.includes("demos") ||
-      t.includes("projects") ||
       t.includes("portfolio") ||
-      t.includes("work")
+      t.includes("projects") ||
+      t.includes("trabajos") ||
+      t.includes("ejemplos")
     ) {
       window.location.href = "#trabajos";
       return language === "es"
-        ? `¡De una! Te llevo a “Nuestros Trabajos”. 😉`
-        : `Sure! Taking you to “Our Work”. 👍`;
+        ? `¡Aquí están nuestros demos! 👇`
+        : `Here are our demos! 👇`;
     }
 
-    // Servicios
+    /* ======== TIEMPO DE ENTREGA ======== */
     if (
-      t.includes("servicio") ||
-      t.includes("services") ||
-      t.includes("web") ||
-      t.includes("website") ||
-      t.includes("design")
+      t.includes("tiempo") ||
+      t.includes("tarda") ||
+      t.includes("entrega") ||
+      t.includes("cuanto dura") ||
+      t.includes("days") ||
+      t.includes("how long")
     ) {
-      window.location.href = "#services";
       return language === "es"
-        ? `Hoy quien no tiene web pierde clientes todos los días. ¿Querés ver qué paquete te funciona mejor?`
-        : `A business without a website loses customers daily. Want to see which package fits you best?`;
+        ? `Desarrollamos tu página en **5 a 7 días hábiles** dependiendo del paquete.  
+Si necesitás algo urgente, también hacemos entregas rápidas.`
+        : `We deliver your website in **5 to 7 business days**, depending on the package. Rush delivery is also available.`;
     }
 
-    // Contacto
+    /* ======== SEO / GOOGLE ======== */
+    if (
+      t.includes("seo") ||
+      t.includes("google") ||
+      t.includes("buscar") ||
+      t.includes("posicionamiento")
+    ) {
+      return language === "es"
+        ? `Todas nuestras páginas incluyen **SEO básico**, velocidad optimizada y estructura para posicionar en Google.`
+        : `All our websites include **basic SEO**, speed optimization and structure ready for Google ranking.`;
+    }
+
+    /* ======== ECOMMERCE ======== */
+    if (
+      t.includes("tienda") ||
+      t.includes("ecommerce") ||
+      t.includes("pago") ||
+      t.includes("carrito") ||
+      t.includes("shop")
+    ) {
+      return language === "es"
+        ? `¡Claro! Podemos integrar tienda online con carrito, pagos, inventario y notificaciones.`
+        : `Absolutely! We can integrate a full online shop with payments, inventory and more.`;
+    }
+
+    /* ======== RESERVAS / CITAS ======== */
+    if (
+      t.includes("cita") ||
+      t.includes("reservar") ||
+      t.includes("booking") ||
+      t.includes("appointment")
+    ) {
+      return language === "es"
+        ? `Podemos agregar un sistema de **reservas o citas** con calendario, horarios y WhatsApp automático.`
+        : `We can add a **booking/appointment system** with calendar and WhatsApp confirmations.`;
+    }
+
+    /* ======== CONTACTO ======== */
     if (
       t.includes("contacto") ||
+      t.includes("contact") ||
       t.includes("whatsapp") ||
       t.includes("telefono") ||
-      t.includes("contact")
+      t.includes("number")
     ) {
       window.location.href = "#contacto";
       return language === "es"
-        ? `¡Con gusto! Te llevo a la sección de contacto o podés escribirme al WhatsApp. ¡Pura vida!`
-        : `Of course! Redirecting you to contact — or you can message me on WhatsApp. Pura vida!`;
+        ? `Te dejo la sección de contacto. O si preferís, escribime directo al WhatsApp.`
+        : `Here is the contact section. Or feel free to text me on WhatsApp.`;
     }
 
-    // Saludo
+    /* ======== SERVICIOS ======== */
     if (
-      t.includes("como estas") ||
-      t.includes("how are you") ||
-      t.includes("pura vida") ||
-      t.includes("?")
+      t.includes("servicios") ||
+      t.includes("service") ||
+      t.includes("web") ||
+      t.includes("design") ||
+      t.includes("diseño")
+    ) {
+      window.location.href = "#services";
+      return language === "es"
+        ? `Aquí están nuestros servicios detallados 👇`
+        : `Here are our detailed services 👇`;
+    }
+
+    /* ======== PREGUNTAS GENERALES ======== */
+    if (
+      t.includes("hola") ||
+      t.includes("hello") ||
+      t.includes("hey") ||
+      t.includes("buenas") ||
+      t.includes("pura vida")
     ) {
       return language === "es"
-        ? `¡Pura vida! ¿Cómo puedo ayudarte hoy?`
-        : `Pura vida! How can I help you today?`;
+        ? `¡Pura vida! ¿Qué te gustaría saber sobre nuestros precios, demos o servicios?`
+        : `Pura vida! What would you like to know about pricing, demos or services?`;
     }
 
-    // Nosotros
-    if (t.includes("nosotros") || t.includes("about") || t.includes("who")) {
+    /* ======== QUIÉNES SOMOS ======== */
+    if (t.includes("nosotros") || t.includes("about")) {
       window.location.href = "#nosotros";
       return language === "es"
-        ? `Soy un emprendedor tico ayudando a negocios a crecer con internet. Tu web es tu nueva vitrina. ¡Pura vida!`
-        : `I’m a Costa Rican creator helping businesses grow online. Your website is your new storefront. Pura vida!`;
+        ? `Somos Pura Vida Tech, creadores ticos ayudando a negocios a crecer digitalmente.`
+        : `We are Pura Vida Tech, helping businesses grow online.`;
     }
 
-    // Despedida
-    if (t.includes("gracias") || t.includes("thanks") || t.includes("bye")) {
+    /* ======== DESPEDIDA ======== */
+    if (
+      t.includes("gracias") ||
+      t.includes("thank") ||
+      t.includes("appreciate")
+    ) {
       return language === "es"
-        ? `Con mucho gusto mae. Recordá: cada día sin web es una venta que se pierde. ¡Pura vida! 🌺`
-        : `My pleasure! Remember: every day without a website is a sale lost. Pura vida! 🌺`;
+        ? `¡Con mucho gusto! Si ocupás algo más, aquí estoy ✨`
+        : `My pleasure! Let me know if you need anything else ✨`;
     }
 
-    // Respuesta general
+    /* ======== DEFAULT ======== */
     return language === "es"
-      ? `Hola! Pura vida 😊 Podés preguntarme por Precios, Quienes Somos, Servicios, Nuestros Trabajos o Contacto.`
-      : `Hi! Pura vida 😊 You can ask me about Pricing, About Us, Services, Our Work or Contact.`;
+      ? `Puedo ayudarte con precios, demos, tiempo de entrega, servicios, tiendas online, reservas, SEO, diseño y más. ¿Qué ocupás saber?`
+      : `I can help with pricing, demos, delivery time, services, online stores, booking, SEO and more. What would you like to know?`;
   };
 
-  // === ENVIAR MENSAJE ===
-  const sendMessage = () => {
+  // === SEND MESSAGE ===
+  const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const userMessage = {
-      id: crypto.randomUUID(),
-      role: "user",
-      content: input,
-    };
-
+    const userMessage = { id: crypto.randomUUID(), role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
+    setInput("");
 
-    const replyMessage = {
+    setIsTyping(true);
+
+    await new Promise((res) => setTimeout(res, 900 + input.length * 15));
+
+    setIsTyping(false);
+
+    const reply = {
       id: crypto.randomUUID(),
       role: "assistant",
       content: handleSmartResponses(input),
     };
 
-    setMessages((prev) => [...prev, replyMessage]);
-    setInput("");
+    setMessages((prev) => [...prev, reply]);
   };
 
   return (
     <>
-      {/* === BOTÓN FLOATING CHAT === */}
-      {!open && (
-        <motion.button
-          onClick={() => setOpen(true)}
-          initial={{ scale: 0 }}
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className={`fixed ${
-            isMobile ? "bottom-28 right-4 p-4" : "bottom-60 right-18 p-5"
-          } rounded-full bg-[#0ea5e9] shadow-2xl hover:scale-110 transition z-50`}
-        >
-          <span className="absolute inset-0 rounded-full bg-[#0ea5e9] opacity-40 blur-xl"></span>
-          <span className="relative z-10 text-white text-3xl">🤖</span>
-        </motion.button>
-      )}
-
-      {/* === CHAT WINDOW === */}
+      {/* === CHAT WINDOW PREMIUM === */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 40 }}
-            className={`fixed transform ${
-              isMobile
-                ? "bottom-4 right-4 w-[88%]"
-                : "top-[72%] right-6 w-80 -translate-y-1/2"
-            } bg-[#0A0A0A]/95 backdrop-blur-lg border border-[#4ecdc4]/40 rounded-2xl shadow-2xl flex flex-col z-50`}
+            initial={{ opacity: 0, scale: 0.85, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 30 }}
+            transition={{ duration: 0.25 }}
+            className={`
+              fixed
+              ${isMobile ? "bottom-32 right-4 w-[82vw]"
+                : "bottom-28 right-16 w-[32rem]"}
+              bg-[#0b0f14]/95
+              backdrop-blur-2xl
+              border border-white/10
+              rounded-3xl
+              shadow-[0_0_35px_rgba(0,0,0,0.5)]
+              flex flex-col
+              z-[999]
+            `}
           >
             {/* Header */}
-            <div className="flex justify-between items-center px-4 py-3 border-b border-[#0ea5e9]/30">
-              <h2 className="text-[#4ecdc4] font-semibold">
-                🤖 {language === "es" ? "Asistente Pura Vida" : "Pura Vida Assistant"}
-              </h2>
+            <div className="px-5 py-4 border-b border-white/10 flex justify-between items-center bg-white/5 backdrop-blur-xl">
+              <h2 className="text-white font-semibold text-lg">🤖 Pura Vida Assistant</h2>
+
               <button onClick={() => setOpen(false)}>
-                <X className="w-5 h-5 text-gray-400 hover:text-white" />
+                <X className="w-6 h-6 text-white/70 hover:text-white" />
               </button>
             </div>
 
-            {/* Mensajes */}
+            {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 max-h-96 text-sm">
               {messages.map((msg) => (
                 <motion.div
                   key={msg.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`p-2 rounded-xl w-fit max-w-[80%] ${
-                    msg.role === "user"
-                      ? "ml-auto bg-[#4ecdc4]/30 text-[#0B1220]"
-                      : "bg-gray-800 text-gray-200"
-                  }`}
+                  className={`p-3 rounded-xl w-fit max-w-[85%] ${msg.role === "user"
+                      ? "ml-auto bg-[#1a232c] text-white border border-white/10 shadow-sm"
+                      : "bg-white/10 text-white border border-white/5 shadow-sm"
+                    }`}
                 >
                   {msg.content}
                 </motion.div>
               ))}
+
+              {isTyping && <TypingIndicator />}
+
               <div ref={bottomRef} />
             </div>
 
             {/* Input */}
-            <div className="flex items-center border-t border-[#4ecdc4]/30 bg-[#0e141b]/70">
+            <div className="flex items-center border-t border-white/10 bg-[#0d131a]/80 backdrop-blur-xl px-3 py-3">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                placeholder={
-                  language === "es"
-                    ? "Escribí tu mensaje..."
-                    : "Type your message..."
-                }
-                className="flex-1 bg-transparent text-white px-3 py-2 text-sm focus:outline-none"
+                placeholder={language === "es" ? "Escribí tu mensaje..." : "Type your message..."}
+                className="flex-1 bg-transparent text-white px-3 py-2 text-sm placeholder-white/40 focus:outline-none"
               />
+
               <button
                 onClick={sendMessage}
-                className="px-3 py-2 hover:bg-[#4ecdc4]/20 transition"
+                className="px-3 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition"
               >
-                <Send className="w-5 h-5 text-[#4ecdc4]" />
+                <Send className="w-5 h-5 text-white" />
               </button>
             </div>
           </motion.div>

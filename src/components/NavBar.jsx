@@ -100,8 +100,8 @@ export default function Navbar({ language, toggleLanguage }) {
         </div>
       </nav>
 
-      {/* MOBILE ULTRA-X BURGER */}
-      <nav className="fixed top-4 right-4 z-50 md:hidden">
+      {/* MOBILE*/}
+      <nav className="fixed top-6 right-9 z-50 md:hidden">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="bg-[#0e141b]/70 backdrop-blur-xl border border-white/10 rounded-full p-2 text-teal-400"

@@ -14,9 +14,9 @@ export default function WhatsAppButton({ language = "es" }) {
   return (
     <>
       {/* 🌟 DESKTOP VERSION (MD and above) */}
-      <div className="hidden md:flex fixed bottom-20 right-9 z-50 flex-col items-center space-y-2">
+      <div className="hidden md:flex fixed bottom-5 right-40 z-50 flex-col items-center space-y-2">
 
-        {/* Texto flotante */}
+        {/*Texto flotante*/}
         <motion.div
           animate={{
             y: [0, -10, 0],
@@ -32,7 +32,7 @@ export default function WhatsAppButton({ language = "es" }) {
           {label}
         </motion.div>
 
-        {/* Botón grande */}
+        {/*Botón grande*/}
         <motion.a
           href={`https://wa.me/${phone}?text=${message}`}
           target="_blank"
@@ -48,14 +48,14 @@ export default function WhatsAppButton({ language = "es" }) {
         </motion.a>
       </div>
 
-      {/* 📱 MOBILE VERSION (Below MD) */}
-      <div className="flex md:hidden fixed bottom-6 right-6 z-50">
+      {/*MOBILE VERSION*/}
+      <div className="flex md:hidden fixed bottom-6 right-24 z-50">
 
         <motion.a
           href={`https://wa.me/${phone}?text=${message}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-2xl shadow-xl"
+          className="relative flex items-center justify-center w-15 h-14 bg-[#25D366] rounded-2xl shadow-xl"
           initial={{ scale: 0 }}
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
