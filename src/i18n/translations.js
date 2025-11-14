@@ -42,7 +42,6 @@ const translations = {
       slogan: "Tecnología con alma tica 🇨🇷",
     },
 
-    // 🆕 Nueva sección bilingüe completa para la página Trabajos
     trabajos: {
       title: "Proyectos Realizados",
       subtitle:
@@ -53,9 +52,14 @@ const translations = {
       realEstateTitle: "Bienes y Raíces",
       realEstateDescription:
         "Plataforma moderna y multilingüe para mostrar propiedades, zonas destacadas y contacto directo.",
-      clinicaTitle:"Clinica Pura Vida",
-      clinicaDescription:"Página web moderna y elegante para una clínica médica costarricense, diseñada para mostrar sus servicios, equipo profesional y ubicación con un enfoque humano y confiable. Incluye secciones visuales premium, testimonios, contacto y herramientas prácticas para pacientes tanto locales como extranjeros.",
-        button: "Ver Pagina Web",
+      clinicaTitle: "Clinica Pura Vida",
+      clinicaDescription:
+        "Página web moderna y elegante para una clínica médica costarricense, diseñada para mostrar sus servicios, equipo profesional y ubicación con un enfoque humano y confiable. Incluye secciones visuales premium, testimonios, contacto y herramientas prácticas para pacientes tanto locales como extranjeros.",
+      button: "Ver Pagina Web",
+      hotelTitle:"Hotel Pura Vida",
+      hotelDescription:
+      "Sitio web moderno, elegante y visualmente envolvente diseñado para hoteles y alojamientos en Costa Rica. Presenta habitaciones, servicios, galería fotográfica y experiencias con un estilo premium inspirado en el turismo tropical.",
+      button: "Ver Pagina Web"
     },
   },
 
@@ -102,7 +106,6 @@ const translations = {
       slogan: "Technology with Costa Rican soul 🇨🇷",
     },
 
-    // 🆕 English section for “Trabajos” page (fully translated)
     trabajos: {
       title: "Completed Projects",
       subtitle:
@@ -114,8 +117,13 @@ const translations = {
       realEstateDescription:
         "Modern multilingual platform featuring property listings, highlighted zones, and contact form integration.",
       clinicaTitle: "Pura Vida Clinic",
-      clinicaDescription: "Modern and elegant website for a Costa Rican medical clinic, designed to showcase its services, professional team, and location with a human and trustworthy approach. It includes premium visual sections, testimonials, contact options, and practical tools for both local and international patients.",
+      clinicaDescription:
+        "Modern and elegant website for a Costa Rican medical clinic, designed to showcase its services, professional team, and location with a human and trustworthy approach. It includes premium visual sections, testimonials, contact options, and practical tools for both local and international patients.",
       button: "View Website",
+       hotelTitle:"Pura Vida Hotel",
+      hotelDescription:
+      "A modern, elegant, and immersive website designed for hotels and accommodations in Costa Rica. It showcases rooms, services, a visual gallery, and experiences with a premium style inspired by tropical tourism.",
+      button: "View Website"
     },
   },
 };

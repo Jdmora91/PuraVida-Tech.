@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ChefHome from "../assets/ChefCalderon/home.jpg";
-import BienesHome from "../assets/BienesRaices/homeFranc.png";
+import BienesHome from "../assets/BienesRaices/propiedades.png";
 import clinica from "../assets/Clinica/Home.png"
 import translations from "../i18n/translations";
+import hotel from "../assets/hotel/hotel.png"
+
 
 export default function Trabajos({ language }) {
   const t = translations[language].trabajos;
@@ -30,6 +32,13 @@ export default function Trabajos({ language }) {
       image: clinica,
       link: "https://demo-clinica-puravida.vercel.app/",
     },
+       {
+      id: 3,
+      title: t.hotelTitle,
+      description: t.hotelDescription,
+      image: hotel,
+      link: "https://demo-hotel-pura-vida.vercel.app/",
+    },
   ];
 
   return (
@@ -44,7 +53,7 @@ export default function Trabajos({ language }) {
         <p className="text-gray-300 max-w-2xl mx-auto">{t.subtitle}</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         {projects.map((project) => (
           <motion.div
             key={project.id}

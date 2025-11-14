@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./components/NavBar";
+
+//Pages
 import Home from "./pages/Home";
 import Nosotros from "./pages/Nosotros";
 import Servicios from "./pages/Servicios";
-import TransitionSection from "./components/TransitionSection";
 import Paquetes from "./pages/Paquetes";
 import Contacto from "./pages/Contacto";
-import Footer from "./components/Footer";
-import ChatBox from "./components/ChatBox";
 import Trabajos from "./pages/Trabajos"; 
+
+//Components
+import Navbar from "./components/NavBar";
+import ChatBot from "./components/ChatBot";
+import WhatsAppButton from "./components/WhatsAppButton";
+import TransitionSection from "./components/TransitionSection";
+import Footer from "./components/Footer";
 
 function App() {
   const [language, setLanguage] = useState("es");
@@ -68,14 +73,13 @@ function App() {
           <TransitionSection />
           <Paquetes language={language} />
           <TransitionSection />
-
-          {/* 🆕 Nueva sección bilingüe de proyectos */}
           <Trabajos language={language} />
           <TransitionSection />
-
           <Contacto language={language} />
+
           <Footer language={language} />
-          <ChatBox language={language} />
+          <ChatBot language={language} />
+          <WhatsAppButton language={language} />
         </div>
       )}
     </>
