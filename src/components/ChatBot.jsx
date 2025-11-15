@@ -33,7 +33,7 @@ export default function ChatBot({ language = "es", open, setOpen }) {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  // === INTELIGENCIA DEL BOT (muchas palabras clave nuevas) ===
+  // INTELIGENCIA DEL BOT 
   const handleSmartResponses = (text) => {
     const t = text.toLowerCase();
 
@@ -166,8 +166,8 @@ Si necesitás algo urgente, también hacemos entregas rápidas.`
       t.includes("pura vida")
     ) {
       return language === "es"
-        ? `¡Pura vida! ¿Qué te gustaría saber sobre nuestros precios, demos o servicios?`
-        : `Pura vida! What would you like to know about pricing, demos or services?`;
+        ? `¡Pura vida! ¿Qué te gustaría saber sobre nuestros precios, Trabajos, WhatsApp, Tiempo de Entrega o servicios?`
+        : `Pura vida! What would you like to know about pricing, Our Work's, WhatsApp, Delivery Time or services?`;
     }
 
     /* ======== QUIÉNES SOMOS ======== */
@@ -230,12 +230,12 @@ Si necesitás algo urgente, también hacemos entregas rápidas.`
             transition={{ duration: 0.25 }}
             className={`
               fixed
-              ${isMobile ? "bottom-32 right-4 w-[82vw]"
-                : "bottom-28 right-16 w-[32rem]"}
+              ${isMobile ? "bottom-22 right-10 w-[82vw]"
+                : "bottom-48 right-9 w-[22rem]"}
               bg-[#0b0f14]/95
               backdrop-blur-2xl
               border border-white/10
-              rounded-3xl
+              rounded-7xl
               shadow-[0_0_35px_rgba(0,0,0,0.5)]
               flex flex-col
               z-[999]
@@ -243,7 +243,7 @@ Si necesitás algo urgente, también hacemos entregas rápidas.`
           >
             {/* Header */}
             <div className="px-5 py-4 border-b border-white/10 flex justify-between items-center bg-white/5 backdrop-blur-xl">
-              <h2 className="text-white font-semibold text-lg">🤖 Pura Vida Assistant</h2>
+              <h2 className="text-white font-semibold text-lg">Pura Vida Assistant</h2>
 
               <button onClick={() => setOpen(false)}>
                 <X className="w-6 h-6 text-white/70 hover:text-white" />

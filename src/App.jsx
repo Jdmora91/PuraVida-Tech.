@@ -101,13 +101,12 @@ function App() {
 
       <Footer language={language} />
 
-      {/* === CHATBOT PREMIUM === */}
       <ChatBot open={openChatbot} setOpen={setOpenChatbot} language={language} />
+   
+      <AIDock openChatbot={() => setOpenChatbot(true)}
+      isChatOpen={openChatbot} language={language} />
 
-      {/* === AI DOCK ULTRA PREMIUM === */}
-      <AIDock openChatbot={() => setOpenChatbot(true)} language={language} />
 
-      {/* === CUSTOM JARVIS SCROLLBAR === */}
       <div id="jarvis-scrollbar">
         <div id="jarvis-track"></div>
         <div id="jarvis-thumb"></div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo4.png";
 import LanguageToggle from "./LanguageToggle";
 import translations from "../i18n/translations";
 import { Menu, X } from "lucide-react";
@@ -18,30 +17,29 @@ export default function Navbar({ language, toggleLanguage }) {
 
   return (
     <>
-      {/* NAVBAR ULTRA-X DESKTOP */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden md:flex">
+      {/* NAVBAR */}
+      <nav className="fixed top-0 left-1/2 -translate-x-1/2 z-50 hidden md:flex">
         <div
           className="
             bg-[#0e141b]/60 
             backdrop-blur-xl 
             border border-white/10 
             rounded-full 
-            px-8 py-2 
+            px-10 py-1 
             shadow-[0_8px_30px_rgba(0,0,0,0.35)]
-            flex items-center gap-8
+            flex items-center gap-40
             transition-all duration-300
           "
         >
-          {/* Logo minimal */}
+          
           <div
             onClick={() => scrollToSection("home")}
-            className="flex items-center gap-2 cursor-pointer select-none"
-          >
-            <img src={Logo} className="h-7 w-auto opacity-90" />
+            className="flex items-center pl-8 pr-15 "
+          ><span className="text-3xl font-bold tracking-wide text-white/90 drop-shadow-[0_1px_4px_rgba(255,255,255,0.25)]"> PuraVidaTech </span>
           </div>
 
           {/* Menu */}
-          <ul className="flex items-center gap-6 text-sm">
+          <ul className="flex items-center gap-6 text-m">
             {[
               { label: t.home, id: "home" },
               { label: t.about, id: "nosotros" },
