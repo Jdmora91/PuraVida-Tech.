@@ -6,7 +6,7 @@ import whatsappIcon from "../assets/icon/whatsapp.svg";
 export default function AIDock({ openChatbot, isChatOpen, language = "es" }) {
   const [open, setOpen] = useState(false);
 
-  const phone = "5067027792";
+  const phone = "50670277792";
   const msg =
     language === "es"
       ? encodeURIComponent("¡Hola! Estoy interesado en una página web. 😄")
